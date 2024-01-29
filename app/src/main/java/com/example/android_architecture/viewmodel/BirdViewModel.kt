@@ -29,9 +29,8 @@ class BirdViewModel : ViewModel() {
         viewModelScope.launch {
             while (true) {
                 val bird = RandomBirdGenerator.generateBird()
-                withContext(Dispatchers.Main) {
-                    countValue.value = bird.height!!
-                }
+                countValue.postValue(bird.height!!)
+
             }
         }
     }
