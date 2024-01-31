@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android_architecture.R
 import com.example.android_architecture.databinding.FragmentBirdsBinding
 import com.example.android_architecture.viewmodel.BirdViewModel
@@ -28,6 +29,8 @@ class BirdsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBirdsBinding.inflate(layoutInflater, container, false)
+        val mananger = LinearLayoutManager(activity)
+        binding.rvBirds.layoutManager = mananger
         return binding.root
     }
 
