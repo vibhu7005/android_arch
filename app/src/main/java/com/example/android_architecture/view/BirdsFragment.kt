@@ -5,15 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android_architecture.R
 import com.example.android_architecture.databinding.FragmentBirdsBinding
+import com.example.android_architecture.model.Bird
 import com.example.android_architecture.viewmodel.BirdViewModel
 
 class BirdsFragment : Fragment() {
     private lateinit var binding: FragmentBirdsBinding
-    private val birdsViewModel : BirdViewModel by viewModels()
+    private val birdsViewModel : BirdViewModel by activityViewModels()
 
 
     companion object {
@@ -29,8 +31,6 @@ class BirdsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBirdsBinding.inflate(layoutInflater, container, false)
-        val mananger = LinearLayoutManager(activity)
-        binding.rvBirds.layoutManager = mananger
         return binding.root
     }
 

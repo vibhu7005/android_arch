@@ -1,28 +1,28 @@
 package com.example.android_architecture.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android_architecture.model.RandomBirdGenerator
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
-class BirdViewModel : ViewModel() {
+class BirdViewModel(val state : SavedStateHandle) : ViewModel() {
 
     init {
-        getBird()
+        Log.d("vaibhav", "hello")
+//        getBird()
     }
-    private var countValue = MutableLiveData<Int>(0)
+    private var countValue = state.getLiveData<Int>("countKey")
 
     fun getCountValue() : LiveData<Int> {
         return countValue
     }
 
     fun incrementCountValue() {
-        countValue.value = countValue.value as Int + 1
+        if (countValue.value == null) countValue.value = 1
+        else countValue.value = countValue.value as Int + 1
     }
 
     private fun getBird() {
