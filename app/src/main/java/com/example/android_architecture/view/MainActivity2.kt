@@ -1,6 +1,5 @@
 package com.example.android_architecture.view
 
-import android.os.Build.VERSION_CODES.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast

@@ -3,6 +3,7 @@ package com.example.android_architecture.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentTransaction
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var counterViewModel : BirdViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if(::binding.isInitialized)
         binding = inflate(layoutInflater)
         setContentView(binding.root)
         counterViewModel = ViewModelProvider(this)[BirdViewModel::class.java]
@@ -44,5 +46,15 @@ class MainActivity : AppCompatActivity() {
     fun openNextActivity(view: View) {
         val intent = Intent(this, MainActivity2::class.java)
         startActivity(intent)
+    }
+
+    override fun onStop() {
+        Log.d("jordiee", "stopped")
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        Log.d("jordiee", "destroyed")
+        super.onDestroy()
     }
 }

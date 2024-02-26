@@ -35,4 +35,9 @@ class BirdViewModel(val state : SavedStateHandle) : ViewModel() {
         }
     }
 
+    override fun onCleared() {
+        Log.d("jordiee", "onCleared")
+        super.onCleared()
+    }
+
 }
